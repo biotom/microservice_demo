@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package pb;
+
+message AddRequest {
+    uint64 a = 1;
+    uint64 b = 2;
+}
+
+message AddResponse {
+    uint64 result = 1;
+}
+
+
+message IsAnagramRequest {
+    string str1 = 1;
+    string str2 = 2;
+}
+
+message IsAnagramResponse {
+    bool anagramBool = 1;
+}
+
+service AddService {
+    rpc Compute (AddRequest) returns (AddResponse) {
+    }
+    rpc Anagram (IsAnagramRequest) returns (IsAnagramResponse){
+
+    }
+}
