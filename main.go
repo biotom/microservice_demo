@@ -1,10 +1,30 @@
 package main
 
-import "context"
+import (
+	"grpc/pb"
+	"log"
+	"net"
 
-func (s *server) Add(ctx context.Context, r *pb.AddReqest) (*pb.AddResponse, err) {
-	response := &pb.AddResponse{}
-	response.Result = r.A + r.B
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
+)
 
-	return response, nil
+func main() {
+	type service struct{}
+
+	listen, err := net.Listen("tcp", ":4000")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	server := grpc.NewServer()
+
+	pb.RegisterAddServiceServer(server, &service{})
+
+	reflection.Register(server)
+	if err := server.Serve(listen); err != nil {
+		log.Fatal(err)
+	}
+
 }
