@@ -6,7 +6,9 @@ import (
 )
 
 //Server represents a gRPC server
-type Server struct{}
+type Server struct {
+	addserviceserver pb.AddServiceServer
+}
 
 //Add adds two numbers
 func (s *Server) Add(ctx context.Context, r *pb.AddRequest) (*pb.AddResponse, error) {

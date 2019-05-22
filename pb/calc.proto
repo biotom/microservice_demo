@@ -22,7 +22,7 @@ message IsAnagramResponse {
 }
 
 service AddService {
-    rpc Compute (AddRequest) returns (AddResponse) {
+    rpc Add (AddRequest) returns (AddResponse) {
     }
     rpc Anagram (IsAnagramRequest) returns (IsAnagramResponse){
 

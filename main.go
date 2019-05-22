@@ -1,8 +1,8 @@
 package main
 
 import (
-	"grpc/pb"
 	"log"
+	"micro_example/pb"
 	"net"
 
 	"google.golang.org/grpc"
